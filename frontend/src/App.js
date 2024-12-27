@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Register from './components/Register';
+import Login from './components/Login';
 import './App.css';
-import React from 'react';
-import Registration from './pages/Registration';
 
 function App() {
+  const [isLogin, setIsLogin] = useState(true); // Toggle state to manage Login and Register views
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app">
+      <header className="app-header">
+        <h1>Welcome to MERN Registration</h1>
       </header>
+
+      <div className="auth-container">
+        {isLogin ? (
+          <div className="login-container">
+            <Login />
+            <p>
+              Don't have an account?{" "}
+              <button onClick={() => setIsLogin(false)}>Register</button>
+            </p>
+          </div>
+        ) : (
+          <div className="register-container">
+            <Register />
+            <p>
+              Already have an account?{" "}
+              <button onClick={() => setIsLogin(true)}>Login</button>
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
