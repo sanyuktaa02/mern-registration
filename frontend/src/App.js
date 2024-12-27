@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Registration from './pages/Registration';
 
 function App() {
   return (
